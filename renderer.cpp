@@ -20,7 +20,7 @@ Renderer::~Renderer() {
   delete sid;
 }
 
-int Renderer::render(WavetableRow* rows, int rowCount, int sampleDuration, short* &buffer) {
+int Renderer::render(std::vector<WavetableRow> rows, int sampleDuration, short* &buffer) {
   const int totalCycles = cyclesPerSample * sampleRate * sampleDuration / 1000;
   const int totalSamples = totalCycles / cyclesPerSample;
 
@@ -32,7 +32,7 @@ int Renderer::render(WavetableRow* rows, int rowCount, int sampleDuration, short
   int row = 0;
   while (cycles < totalCycles) {
     if (cycles % cyclesPerStep == 0) {
-      if (row < rowCount) {
+      if (row < rows.size()) {
         writeRegisters(&rows[row]);
         row++;
       }

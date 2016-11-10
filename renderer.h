@@ -1,3 +1,5 @@
+#include <vector>
+
 class SID;
 
 struct WavetableRow {
@@ -21,7 +23,7 @@ public:
   Renderer();
   ~Renderer();
 
-  int render(WavetableRow* rows, int rowCount, int sampleDuration, short* &buffer);
+  int render(std::vector<WavetableRow> rows, int sampleDuration, short* &buffer);
 
 private:
   void writeRegisters(WavetableRow* row);

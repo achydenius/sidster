@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -Wall -pedantic
-OBJS = renderer.o sidster.o
+OBJS = renderer.o loader.o sidster.o
 INCLUDES = -I/usr/local/include/resid
 LIBS = -lresid
 
