@@ -3,16 +3,28 @@
 #include <cstdio>
 #include <vector>
 
-int main() {
+int main(int argc, char** argv) {
+  if (argc < 4) {
+    printf("Usage: sidster [wavetable-file] [output-file] [sample-duration-ms]\n");
+    return 0;
+  }
+
+  char* wavetableFilename = argv[1];
+  char* outputFilename = argv[2];
+  int duration = std::stoi(argv[3], 0);
+
   Loader loader;
-  std::vector<WavetableRow> steps = loader.load("instrument.txt");
+  std::vector<WavetableRow> steps = loader.load(wavetableFilename);
+  printf("Loaded %lu wavetable rows from %s\n", steps.size(), wavetableFilename);
 
   short* buffer = 0;
   Renderer renderer;
-  int totalSamples = renderer.render(steps, 750, buffer);
+  int totalSamples = renderer.render(steps, duration, buffer);
+  printf("Rendered %d samples\n", totalSamples);
 
   FILE* fp;
-  fp = fopen("output.raw", "wb");
-  fwrite(buffer, 2, totalSamples, fp);
+  fp = fopen(outputFilename, "wb");
+  int writtenSamples = fwrite(buffer, 2, totalSamples, fp);
   fclose(fp);
+  printf("Wrote %d samples to %s\n", writtenSamples, outputFilename);
 }
