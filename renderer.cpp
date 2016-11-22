@@ -69,5 +69,17 @@ void Renderer::writeRegisters(WavetableRow* row) {
     sid->write(5, (row->adsr & 0xff00) >> 8);
     sid->write(6, row->adsr & 0xff);
   }
-}
 
+  if (row->cutoff != WavetableRow::EMPTY) {
+    sid->write(0x15, row->cutoff & 0xff);
+    sid->write(0x16, (row->cutoff & 0xff00) >> 8);
+  }
+
+  if (row->resonance != WavetableRow::EMPTY) {
+    sid->write(0x17, row->resonance);
+  }
+
+  if (row->mode != WavetableRow::EMPTY) {
+    sid->write(0x18, (row->mode << 4) | 0xf);
+  }
+}

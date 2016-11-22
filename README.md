@@ -16,9 +16,12 @@ Files can be played back for example with [SoX](http://sox.sourceforge.net/): `p
 
 ## Wavetable file format
 
-Wavetables are defined as plain text files. A wavetable file consists of rows that define a set of values that are written consecutively to SID registers with an interval of 20 milliseconds. The values map directly to [SID registers](http://www.waitingforfriday.com/index.php/Commodore_SID_6581_Datasheet) and are separated by two spaces. A single wavetable row consists of:
+Wavetables are defined as plain text files. A wavetable file consists of rows that define a set of hexadecimal values that are written consecutively to SID registers with an interval of 20 milliseconds. The values map directly to [SID registers](http://www.waitingforfriday.com/index.php/Commodore_SID_6581_Datasheet) and are separated by two spaces. A single wavetable row consists of:
 
 * Frequency (2 bytes)
 * Voice control (1 byte)
 * Envelope (2 bytes)
 * Pulse width (3 nibbles)
+* Filter cutoff (2 bytes)
+* Filter resonance & toggle filter (1 nibble)
+* Filter mode (1 nibble)

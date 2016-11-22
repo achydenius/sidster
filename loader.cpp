@@ -15,6 +15,9 @@ std::vector<WavetableRow> Loader::load(std::string filename) {
     row.waveform = parseValue(line, 6, 2);
     row.adsr = parseValue(line, 10, 4);
     row.pulse = parseValue(line, 16, 3);
+    row.cutoff = parseValue(line, 20, 4);
+    row.resonance = parseValue(line, 26, 2);
+    row.mode = parseValue(line, 30, 1);
     rows.push_back(row);
   }
 

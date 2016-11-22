@@ -8,6 +8,9 @@ struct WavetableRow {
   short waveform;
   int adsr;
   short pulse;
+  int cutoff;
+  short resonance;
+  short mode;
 };
 
 class Renderer {
