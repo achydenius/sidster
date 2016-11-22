@@ -20,8 +20,8 @@ Renderer::~Renderer() {
   delete sid;
 }
 
-int Renderer::render(std::vector<WavetableRow> rows, int sampleDuration, short* &buffer) {
-  const int totalCycles = cyclesPerSample * sampleRate * sampleDuration / 1000;
+int Renderer::render(std::vector<WavetableRow> rows, short* &buffer) {
+  const int totalCycles = cyclesPerStep * rows.size();
   const int totalSamples = totalCycles / cyclesPerSample;
 
   buffer = new short[totalSamples];

@@ -26,7 +26,7 @@ public:
   Renderer();
   ~Renderer();
 
-  int render(std::vector<WavetableRow> rows, int sampleDuration, short* &buffer);
+  int render(std::vector<WavetableRow> rows, short* &buffer);
 
 private:
   void writeRegisters(WavetableRow* row);

@@ -8,7 +8,7 @@ Build and install [ReSID](http://www.zimmers.net/anonftp/pub/cbm/crossplatform/e
 
 ## Usage
 
-Run the application with `./sidster [wavetable-file] [output-file] [sample-duration-ms]`.
+Run the application with `./sidster [wavetable-file] [output-file]`.
 
 Generated file is a 16-bit/44.1KHz raw mono audio file that is stored as signed little-endian data.
 

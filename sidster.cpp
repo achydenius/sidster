@@ -4,14 +4,13 @@
 #include <vector>
 
 int main(int argc, char** argv) {
-  if (argc < 4) {
-    printf("Usage: sidster [wavetable-file] [output-file] [sample-duration-ms]\n");
+  if (argc < 3) {
+    printf("Usage: sidster [wavetable-file] [output-file]\n");
     return 0;
   }
 
   char* wavetableFilename = argv[1];
   char* outputFilename = argv[2];
-  int duration = std::stoi(argv[3], 0);
 
   Loader loader;
   std::vector<WavetableRow> steps = loader.load(wavetableFilename);
@@ -19,7 +18,7 @@ int main(int argc, char** argv) {
 
   short* buffer = 0;
   Renderer renderer;
-  int totalSamples = renderer.render(steps, duration, buffer);
+  int totalSamples = renderer.render(steps, buffer);
   printf("Rendered %d samples\n", totalSamples);
 
   FILE* fp;
