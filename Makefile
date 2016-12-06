@@ -2,7 +2,7 @@ CC = g++
 CFLAGS = -Wall -pedantic
 OBJS = renderer.o loader.o sidster.o
 INCLUDES = -I/usr/local/include/resid
-LIBS = -lresid
+LIBS = -lresid -lyaml-cpp
 
 all: sidster
 

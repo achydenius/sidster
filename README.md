@@ -4,7 +4,9 @@ SIDster is a [SID](https://en.wikipedia.org/wiki/MOS_Technology_SID) wavetable s
 
 ## Installation
 
-Build and install [ReSID](http://www.zimmers.net/anonftp/pub/cbm/crossplatform/emulators/resid/index.html) first as it's used for harware emulation. Then build the application with `make`.
+- Build and install [ReSID](http://www.zimmers.net/anonftp/pub/cbm/crossplatform/emulators/resid/index.html)
+- Install [yaml-cpp](https://github.com/jbeder/yaml-cpp)
+- Build application with `make`
 
 ## Usage
 
@@ -16,7 +18,7 @@ Files can be played back for example with [SoX](http://sox.sourceforge.net/): `p
 
 ## Wavetable file format
 
-Wavetables are defined as plain text files. A wavetable file consists of rows that define a set of hexadecimal values that are written consecutively to SID registers with an interval of 20 milliseconds. The values map directly to [SID registers](http://www.waitingforfriday.com/index.php/Commodore_SID_6581_Datasheet) and are separated by two spaces. A single wavetable row consists of:
+Wavetables can be defined as plain text or [YAML](http://yaml.org/) files. A wavetable file consists of rows that define a set of hexadecimal values that are written consecutively to SID registers with an interval of 20 milliseconds. The values map directly to [SID registers](http://www.waitingforfriday.com/index.php/Commodore_SID_6581_Datasheet) and are separated by two spaces. A single wavetable row consists of:
 
 * Frequency (2 bytes)
 * Voice control (1 byte)

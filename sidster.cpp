@@ -11,9 +11,16 @@ int main(int argc, char** argv) {
 
   char* wavetableFilename = argv[1];
   char* outputFilename = argv[2];
+  char* format = strrchr(wavetableFilename, '.');
 
   Loader loader;
-  std::vector<WavetableRow> steps = loader.load(wavetableFilename);
+  std::vector<WavetableRow> steps;
+  if (!strcmp(format, ".yml")) {
+    steps = loader.loadFromYaml(wavetableFilename);
+  } else {
+    steps = loader.loadFromTxt(wavetableFilename);
+  }
+
   printf("Loaded %lu wavetable rows from %s\n", steps.size(), wavetableFilename);
 
   short* buffer = 0;
